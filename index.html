@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophie's Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600&display=swap');
+
+        :root {
+            --primary: #FF7AA2;          /* From query */
+            --secondary: #B76CFD;        /* From query */
+            --accent: #6C8EFD;           /* From query */
+            --text: #333344;             /* From query */
+            --light: #FFF9FB;            /* From query */
+            --glass-bg: rgba(255, 255, 255, 0.2); /* Enhanced design */
+            --heart-color: rgba(255, 122, 162, 0.3); /* Adjusted for hearts */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f4ff, #e0e7ff); /* Enhanced gradient */
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            perspective: 1000px; /* For 3D effects */
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px); /* Glassmorphism */
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--light);
+            box-shadow: 0 8px 20px rgba(183, 108, 253, 0.2);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(183, 108, 253, 0.3);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.2rem;
+            background: var(--light);
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Main Content */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        section {
+            padding: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px); /* Glassmorphism */
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transform: rotateY(10deg); /* Initial 3D tilt */
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: rotateY(0deg); /* Straighten on scroll */
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        h2 i {
+            font-size: 1.4rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--primary);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 15px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--light);
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: var(--primary);
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
+        }
+
+        .institution {
+            font-size: 0.95rem;
+        }
+
+        /* Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .heart {
+            color: var(--primary);
+            animation: beat 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            40% { transform: scale(0.95); }
+            60% { transform: scale(1.05); }
+        }
+
+        /* Background Hearts */
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            --heart-size: 50px;
+            width: var(--heart-size);
+            height: calc(var(--heart-size) * 0.9);
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .shape::before,
+        .shape::after {
+            content: '';
+            position: absolute;
+            width: calc(var(--heart-size) / 2);
+            height: calc(var(--heart-size) * 0.8);
+            background: var(--heart-color);
+            border-radius: calc(var(--heart-size) / 2) calc(var(--heart-size) / 2) 0 0;
+        }
+
+        .shape::before {
+            left: calc(var(--heart-size) / 2);
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .shape::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        .shape:nth-child(1) { --heart-size: 60px; top: 20%; left: 10%; }
+        .shape:nth-child(2) { --heart-size: 80px; top: 60%; left: 80%; animation-delay: -5s; }
+        .shape:nth-child(3) { --heart-size: 40px; top: 40%; left: 50%; animation-delay: -3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem 1rem; }
+            section { padding: 1.5rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="container">
+        <header>
+            <img src="https://i.pravatar.cc/150?img=5" alt="Profile" class="profile-pic">
+            <h1>Jayashree</h1>
+            <p class="tagline">Creative Artist & Developer</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>jayasreejisoo2004@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 9876543210</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Ariyalur, Tamil Nadu</span>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section id="education">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="timeline-item">
+                    <h3>SSL (10th Grade)</h3>
+                    <span class="date">2019 - 2020</span>
+                    <p class="institution">Varadha Vikas Perableaur - Arts and Creative Writing distinction</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>HSC (12th Grade)</h3>
+                    <span class="date">2021 - 2022</span>
+                    <p class="institution">Vidya Mandir - Visual Arts and Literature</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>BA English (Correspondence)</h3>
+                    <span class="date">2023 - 2025</span>
+                    <p class="institution">University of Correspondence - Creative Writing focus</p>
+                </div>
+            </section>
+            <section id="courses">
+                <h2><i class="fas fa-certificate"></i> Courses</h2>
+                <div class="timeline-item">
+                    <h3>Advanced Python Programming</h3>
+                    <span class="date">November 2023</span>
+                    <p class="institution">Tech Education Institute - Completed with honors</p>
+                </div>
+            </section>
+            <section id="achievements">
+                <h2><i class="fas fa-trophy"></i> Achievements</h2>
+                <div class="timeline-item">
+                    <h3>Drawing Competition - 2nd Prize</h3>
+                    <span class="date">2023</span>
+                    <p class="institution">Tamil Nadu Police - Certificate of Merit in Drawing Competition conducted by Ariyalur District</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>National Competition Achievement</h3>
+                    <span class="date">2019</span>
+                    <p class="institution">Government of India - Certificate for Best Painting in School Level Entry</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <a href="#contact" class="floating-btn">
+        <i class="fas fa-paper-plane"></i>
+    </a>
+    <footer>
+        <p>Made with <span class="heart">❤</span> by Jayashree</p>
+    </footer>
+    <script>
+        function animateOnScroll() {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+        });
+    </script>
+</body>
+</html>
