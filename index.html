@@ -299,6 +299,40 @@
             h1 { font-size: 2rem; }
             h2 { font-size: 1.5rem; }
         }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-bubble {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--light);
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-bubble:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .skill-bubble i {
+            font-size: 1.2rem;
+        }
+
+        .skill-bubble:hover i {
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -352,6 +386,35 @@
                     <h3>Advanced Python Programming</h3>
                     <span class="date">November 2023</span>
                     <p class="institution">Tech Education Institute - Completed with honors</p>
+                </div>
+            </section>
+            <section id="skills">
+                <h2><i class="fas fa-code"></i> Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-bubble">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-bubble">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML</span>
+                    </div>
+                    <div class="skill-bubble">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS</span>
+                    </div>
+                    <div class="skill-bubble">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-bubble">
+                        <i class="fas fa-file-word"></i>
+                        <span>MS Word</span>
+                    </div>
+                    <div class="skill-bubble">
+                        <i class="fas fa-file-excel"></i>
+                        <span>MS Excel</span>
+                    </div>
                 </div>
             </section>
             <section id="achievements">
